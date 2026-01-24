@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import type { LogEntry, LogLevel } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
@@ -20,6 +20,11 @@ const levelConfig: Record<LogLevel, { icon: React.ElementType; className: string
 
 export function LogItem({ log, onSelect }: LogItemProps) {
   const { icon: Icon, className } = levelConfig[log.level];
+  const [formattedTimestamp, setFormattedTimestamp] = useState('');
+
+  useEffect(() => {
+    setFormattedTimestamp(format(new Date(log.timestamp), 'MMM dd, HH:mm:ss.SSS'));
+  }, [log.timestamp]);
 
   const hoverBgClass = {
     'INFO': 'hover:bg-chart-2/10',
@@ -38,7 +43,7 @@ export function LogItem({ log, onSelect }: LogItemProps) {
       )}
     >
       <span className="text-muted-foreground whitespace-nowrap">
-        {format(new Date(log.timestamp), 'MMM dd, HH:mm:ss.SSS')}
+        {formattedTimestamp}
       </span>
       <span className={cn('font-semibold flex items-center gap-2', className)}>
         <Icon className="h-4 w-4" />
