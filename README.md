@@ -11,7 +11,7 @@ LogLens enables users to:
 
 Stream logs in real time
 
-Filter logs by level and source
+Filter logs by level and  source
 
 Search logs instantly by keywords
 
