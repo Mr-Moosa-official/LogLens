@@ -7,7 +7,7 @@ LogLens is ideal for debugging, observability, and understanding system behavior
 
 🚀 What LogLens Does
 
-LogLens enables users to:
+LogLens  enables users to:
 
 Stream logs in real time
 
